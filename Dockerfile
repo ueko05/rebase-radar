@@ -2,13 +2,13 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-COPY rebase-radar-v0.3.zip /tmp/rebase-radar-v0.3.zip
+COPY rebase-radar-v0.3.1.zip /tmp/rebase-radar-v0.3.1.zip
 
-RUN python -c "import zipfile; zipfile.ZipFile('/tmp/rebase-radar-v0.3.zip').extractall('/tmp/src')" \
+RUN python -c "import zipfile; zipfile.ZipFile('/tmp/rebase-radar-v0.3.1.zip').extractall('/tmp/src')" \
     && cp -a /tmp/src/rebase-radar-v1/. /app/ \
     && pip install --no-cache-dir . \
     && mkdir -p /data \
-    && rm -rf /tmp/src /tmp/rebase-radar-v0.3.zip
+    && rm -rf /tmp/src /tmp/rebase-radar-v0.3.1.zip
 
 ENV RADAR_DB=/data/radar.db \
     RADAR_CONFIG=/app/config/targets.yaml \
